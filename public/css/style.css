@@ -1,0 +1,79 @@
+
+
+.header-row {
+  margin:50 0
+}
+
+.centered-form {
+  width:90%;
+  margin: auto
+}
+
+.content-form {
+  height:100px
+}
+
+.prayer-row {
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #eee;
+  background: white;
+}
+
+.prayer-text {
+  font-size:18;
+  font-weight: 500
+}
+
+.comments-div {
+  margin-top: 15px
+}
+
+#comment-section {
+  margin: auto;
+  padding-top: 10px;
+}
+
+.btn-right {
+  float: right
+}
+
+.prayer {
+  background: white
+}
+
+.prayer-icon {
+  height: 25px;
+  width: 25px;
+}
+
+.prayers-count {
+  display: inline
+}
+
+.comment-btn {
+  width: 75px;
+  margin: auto
+}
+
+#comment-input {
+  width: 100%
+}
+.section-header {
+    padding-bottom: 9px;
+    margin: 20px 0 40px;
+    border-bottom: 1px solid #eee;  
+    font-size: 42px;
+}
+
+
+
+hr {
+  border-bottom: 1px solid #eee;
+  margin: 10px 0px
+  }
+
+body {
+  padding-top:50px
+}

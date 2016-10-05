@@ -1,0 +1,78 @@
+<% include partials/header %>
+      
+     
+     <!-- Page Content -->
+    <div class="container">
+      <p class="section-header text-center">Prayers</p>
+      
+      <!-- Add Prayer -->
+      <%if(currentUser) {%>
+      <div class="row">
+        <div class="centered-form">
+            <form action="/prayers" method="POST">
+                <div class="form-group">
+                    <input type="text" maxlength="150" class="form-control centered-form content-form" placeholder="Tell us about your prayer request in 150 characters" name="prayer[content]"></input>
+                </div> 
+                <div class="form-group">
+                    <button class="btn btn-primary btn-large btn-block centered-form">Get Prayers Up</button>
+                </div>
+            </form>           
+        </div>
+      <% } else { %>
+        <h4 class="text-center text-danger">Log in to post on Prayers Up and to support others in need.</h4>
+      <% } %>
+      <!-- Prayers List -->
+      <% prayers.forEach(function(prayer){ %>
+        <div class="prayer-row">
+          
+            <!-- Post Content -->
+            <p ><%= prayer.author.username %> - <strong><%= prayer.content %></strong></p>
+            <hr>
+
+            
+
+            <% if (prayer.comments.length>0) { %>
+              <!-- Toggle Comment buttons -->
+              <button type="button" data-toggle="collapse" data-target="#prayer<%=prayer._id%>-comments" aria-expanded="true" aria-controls="collapseExample" class="btn btn-default btn-sm">
+                <%=prayer.comments.length%> Comments <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> 
+              </button>
+              
+
+              <!--Prayer Comments -->
+              
+              <div class="collapse comments-div" id="prayer<%=prayer._id%>-comments">
+                <% prayer.comments.reverse().forEach(function(comment){ %>
+                  <% console.log(comment.author) %>
+                  <p><strong><%=comment.author.username%></strong> - <%=comment.text%></p>
+                <% }) %>
+            </div>
+          <% } %>
+
+
+
+          <!-- Comment Box/Form -->
+          <%if(currentUser) {%>
+           <hr>
+           <form action="/comments" method="POST">
+            <div class="form-inline row">
+              <div class="form-group col-sm-10">
+                  <input type="text" class="form-control" id="comment-input" placeholder="Comment" name="comment[text]"></input>
+                </div>
+                <div class="form-group col-sm-2">
+                  <button class="btn btn-primary  btn-block ">Post</button>
+              </div>
+              <input type="hidden" name="id" value="<%=prayer.id%>" />
+            </div>
+          </form> 
+          <% } %>
+
+        </div><!-- End Row -->
+        
+      <% }) %>
+    
+    
+      
+    </div><!--End Container Div-->
+   
+<% include partials/footer %>
+
